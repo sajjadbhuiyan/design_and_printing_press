@@ -1,21 +1,28 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import Footer from './common/Footer/Footer';
-import Header from './common/Header/Header';
-import About from './pages/About/About';
-import Contact from './pages/Contact/Contact';
-import Home from './pages/Home/Home';
-import NotFound from './pages/NotFound/NotFound';
+import Footer from "./Common/Header/Footer/Footer";
+import Header from './Common/Header/Header';
+import About from "./Components/About/About";
+import Contact from "./Components/Contact/Contact";
+import Home from './Components/Home/Home';
+import Login from "./Components/Login/Login/Login";
+import MyCarosole from "./Components/MyCarosole/MyCarosole";
+import NotFound from "./Components/NotFound/NotFound";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Registration from "./Components/Registration/Registration";
+import Serve from "./Components/Serve/Serve";
+import ServiceDetail from "./Components/ServiceDetail/ServiceDetail";
+import AuthProvider from "./contexts/AuthProvider";
 
 function App() {
   return (
-    <div>
-       {/* <AuthProvider> */}
+    <div >
+    <AuthProvider>
     <Router>
       <Header></Header>
-      {/* <MyCarosole></MyCarosole> */}
+      <MyCarosole></MyCarosole>
       <Switch>
-        <Route exact path = '/'>
+      <Route exact path = '/'>
             <Home></Home>
         </Route>
         <Route exact path = '/home'>
@@ -24,29 +31,29 @@ function App() {
         <Route path = '/about'>
             <About></About>
         </Route>
-        {/* <Route path = '/services'>
+        <Route path = '/services'>
             <Serve></Serve>
-        </Route> */}
-        {/* <PrivateRoute path='/service/:serviceId'>
+        </Route>
+        <PrivateRoute path='/service/:serviceId'>
           <ServiceDetail></ServiceDetail>
-        </PrivateRoute> */}
+        </PrivateRoute>
         <Route path = '/contact'>
             <Contact></Contact>
         </Route>
-        {/* <Route path = '/login'>
+        <Route path = '/login'>
             <Login></Login>
-        </Route> */}
-        {/* <Route path = '/registration'>
+        </Route>
+        <Route path = '/registration'>
             <Registration></Registration>
-        </Route> */}
+        </Route>
         <Route path = '/*'>
             <NotFound></NotFound>
         </Route>
       </Switch>
       <Footer></Footer>
     </Router>
-    {/* </AuthProvider> */}
-    </div>
+    </AuthProvider>
+  </div>
   );
 }
 
