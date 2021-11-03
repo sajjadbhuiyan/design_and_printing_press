@@ -9,9 +9,9 @@ const MyCarosole = () => {
             <div class="row">
             <div class="col-lg-6">
                    <div class="banner_con">
-                       <h4>Hi! We Are</h4>
-                       <h2>Best Health Care of the world</h2>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation. </p>
+                       <h4>Welcome To SB Design and Printing Press!</h4>
+                       <h2>IT'S NICE TO MEET YOU</h2>
+                       <p>Quality Printing Press is a graphics, printing & packaging firm that represents the strength, innovation and dedication of the people behind it. We are passionate about what we do and put our maximum effort to fulfill our client’s requirements. We are a team of creative & technical people having ... </p>
                    </div>
                 </div>
             </div>
