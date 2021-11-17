@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Container, Form, Image } from 'react-bootstrap';
+import contactImage from '../../images/contact.jpg';
 
 const Contact = () => {
     return (
@@ -25,6 +26,7 @@ const Contact = () => {
             </div> 
             
             <div className="pt-5">
+            <Image src={contactImage} fluid></Image>
             </div>
         </div>
         </Container>

@@ -3,11 +3,15 @@ import './App.css';
 import Footer from "./Common/Header/Footer/Footer";
 import Header from './Common/Header/Header';
 import About from "./Components/About/About";
+import AddServices from "./Components/AddServices/AddServices";
 import Contact from "./Components/Contact/Contact";
 import Home from './Components/Home/Home';
 import Login from "./Components/Login/Login/Login";
-import MyCarosole from "./Components/MyCarosole/MyCarosole";
+import ManageServices from "./Components/ManageServices/ManageServices";
+import MyOrder from "./Components/MyOrder/MyOrder";
 import NotFound from "./Components/NotFound/NotFound";
+import PaymentGetWay from "./Components/PaymentGetWay/PaymentGetWay";
+import PlaceOrder from "./Components/PlaceOrder/PlaceOrder";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Registration from "./Components/Registration/Registration";
 import Serve from "./Components/Serve/Serve";
@@ -20,7 +24,6 @@ function App() {
     <AuthProvider>
     <Router>
       <Header></Header>
-      <MyCarosole></MyCarosole>
       <Switch>
       <Route exact path = '/'>
             <Home></Home>
@@ -34,8 +37,23 @@ function App() {
         <Route path = '/services'>
             <Serve></Serve>
         </Route>
-        <PrivateRoute path='/service/:serviceId'>
+        <Route path='/service/:serviceId'>
           <ServiceDetail></ServiceDetail>
+        </Route>
+        <PrivateRoute exact path="/placeorder/:serviceId">
+            <PlaceOrder></PlaceOrder>
+          </PrivateRoute>
+        <PrivateRoute path='/addservice'>
+          <AddServices></AddServices>
+        </PrivateRoute>
+        <PrivateRoute path='/myorder'>
+          <MyOrder></MyOrder>
+        </PrivateRoute>
+        <PrivateRoute path='/manage'>
+          <ManageServices></ManageServices>
+        </PrivateRoute>
+        <PrivateRoute path='/payment'>
+          <PaymentGetWay></PaymentGetWay>
         </PrivateRoute>
         <Route path = '/contact'>
             <Contact></Contact>

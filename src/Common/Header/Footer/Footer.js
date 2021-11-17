@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import logo from '../../../logo.png'
 import './Footer.css'
 
 const Footer = () => {
@@ -9,7 +8,7 @@ const Footer = () => {
     <div className="container-fluid text-center text-md-left">
         <div className="row content_style">
             <div className="col-md-6 mt-md-0 mt-3">
-                <img src={logo} alt=""/>
+                <h1>SB PRINTING</h1>
                 <h3>About</h3>
                 <p>Our students are very poor and they can't afford <br/> to drink tea and wear good clothes for them so we can make<br/>  them good quality.</p>
             </div>

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Components/Login/Firebase/firebase.init";
 
@@ -6,11 +6,10 @@ initializeAuthentication();
 
 const useFirebase = () =>{
     const [user,setUser] = useState({});
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [authError, setAuthError] = useState('');
 
     const auth = getAuth();
+    
     const signInUsingGoogle = () =>{
         const googleProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleProvider)
@@ -29,62 +28,56 @@ const useFirebase = () =>{
         return () => unsubscribed;
     },[])
 
-    const logOut = () => {
-        signOut(auth)
-        .then(() =>{ });
-    }
+// user registration
+const handleRegistration = (email, password, name) =>{
 
-    const handleEmailChange = e =>{
-        setEmail(e.target.value);
-    }
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        setAuthError('');
+        const newUser = {email, displayName:name}
+        setUser(newUser);
+        updateProfile(auth.currentUser, {
+            displayName: name
+          }).then(() => {
+          }).catch((error) => {
+          });
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      });
+    //   history.push('/');
+}
 
-    const handlePasswordChange = e =>{
-        setPassword(e.target.value);
-    }
 
-    //registration 
-    const handleRegistration = (e) =>{
-        e.preventDefault();
-        if(password.length < 6){
-            setError('Set password at least 6 char');
-            return;
-        }
-        createUserWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            const user = result.user;
-            setError('');
-        })
+//login system
 
-        .catch(error => {
-            setError(error.message);
-        })
-        
-    }
 
-    //login
-    const handleLogin = (e,email, password) => {
-        e.preventDefault();
-        signInWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            const user = result.user;
-            setError('');
-        })
-        .catch(error => {
-            setError(error.message);
-        })
-    }
+const handleLogin = (email, password, location, history) => {
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        const destination = location?.state?.from || '/home';
+        history.replace(destination);
+        setAuthError('');
+      })
+      .catch((error) => {
+        setAuthError(error.message);
+      });
+
+}
+
+
+const logOut = () => {
+    signOut(auth)
+    .then(() =>{ });
+}
 
     return{
         user,
-        error,
-        email,
-        password,
+        handleRegistration,
+        handleLogin,
         signInUsingGoogle,
         logOut,
-        handleRegistration,
-        handleEmailChange,
-        handlePasswordChange,
-        handleLogin
+        authError
     }
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import about1 from '../../../src/images/3.png';
-import about2 from '../../../src/images/4.png';
+import { Container, Image } from 'react-bootstrap';
+import about1 from '../../../src/images/3.jpg';
+import about2 from '../../../src/images/4.jpg';
 import './About.css';
 
 const About = () => {
@@ -9,7 +9,7 @@ const About = () => {
         <Container>
             <div className='box_container'>
             <div className = 'image_style pt-5'>
-                <img style={{height:'700px', width:'600px'}} src={about1} alt=""/>
+                <Image src={about1} fluid alt=""/>
             </div>
             <div>
                 <h1 className='heading'>WHO WE ARE</h1>
@@ -27,7 +27,7 @@ const About = () => {
                 In order to achieve our goals, we will start by working to improve the despairing conditions of communities that suffer the most. Worldwide, children are the ones most affected by abject conditions, and this is the case in Liberia as well. Our goal is to provide Liberian children with basic nutrition, healthcare and education so they can reach adulthood, become self-supporting individuals, and be able to work for the benefit of their community in the future.</p>
             </div>
             <div className = 'image_style pb-5'>
-                <img style={{height:'700px', width:'600px'}} src={about2} alt="" />
+                <Image src={about2} fluid alt="" />
             </div>
             
         </div>
