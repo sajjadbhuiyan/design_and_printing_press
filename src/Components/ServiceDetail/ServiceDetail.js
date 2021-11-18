@@ -25,7 +25,7 @@ const ServiceDetail = () => {
             <h6 className='pt-3'>{serviceDescription}</h6>
             <p className='pt-4 pb-5'>{moreDetails}</p>
             <h3>TK: {price}</h3>
-            <Link to={`/placeorder/${serviceId}`} className='btn btn-info p-3'>Place Order</Link>      
+            <Link to={`/cart/${serviceId}`} className='btn btn-info p-3'>Add to Cart</Link>      
         </div>
         </div>
         </Container>

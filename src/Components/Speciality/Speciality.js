@@ -10,7 +10,8 @@ const Speciality = () => {
     return (
         <Container>
             <div className='speciality_heading'>
-            <h2>SB PRINTING AND PRINTING PRESS</h2>
+            <h2>SB DESIGN AND PRINTING PRESS</h2>
+            <h3>GET COOL ORDER</h3>
             <span>All kinds of Printing Press & Garments Accessories Manufacturer & Supplier</span>
             </div>
             <div className='specility_container'>

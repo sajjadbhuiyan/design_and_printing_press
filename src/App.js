@@ -4,6 +4,7 @@ import Footer from "./Common/Header/Footer/Footer";
 import Header from './Common/Header/Header';
 import About from "./Components/About/About";
 import AddServices from "./Components/AddServices/AddServices";
+import Cart from "./Components/Cart/Cart";
 import Contact from "./Components/Contact/Contact";
 import Home from './Components/Home/Home';
 import Login from "./Components/Login/Login/Login";
@@ -52,6 +53,9 @@ function App() {
         <PrivateRoute path='/manage'>
           <ManageServices></ManageServices>
         </PrivateRoute>
+        <Route path = '/cart/:serviceId'>
+            <Cart></Cart>
+        </Route>
         <PrivateRoute path='/payment'>
           <PaymentGetWay></PaymentGetWay>
         </PrivateRoute>

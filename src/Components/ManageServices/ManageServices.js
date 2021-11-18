@@ -8,7 +8,7 @@ const ManageServices = () => {
     // const {serviceTitle,image} = services;
 
     const handleDelete = id =>{
-        const url = `https://guarded-plateau-66773.herokuapp.com/${id}`;
+        const url = `https://guarded-plateau-66773.herokuapp.com/services/${id}`;
         fetch(url,{
             method: 'DELETE'
         })
