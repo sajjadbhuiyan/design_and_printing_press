@@ -11,6 +11,7 @@ import useAuth from '../../hooks/useAuth';
 
 
 const MyOrder = () => {
+  // const [services] = useServices();
     const {user} = useAuth();
     const [orders, setOrders] = useState([])
 
@@ -23,6 +24,26 @@ const MyOrder = () => {
 
     // const {serviceTitle,price,userName,image} = orders;
     // console.log(orders)
+
+
+    const handleDelete = id =>{
+      const url = `https://guarded-plateau-66773.herokuapp.com/orders/${id}`;
+      fetch(url,{
+          method: 'DELETE'
+      })
+
+      .then(res => res.json())
+      .then(data => {
+          console.log(data);
+          if(data.deletedCount){
+          alert('deleted')
+          const remaining = orders.filter(order => order._id !== id);
+          setOrders(remaining);
+          // const remaining = services.filter(service => service._id !== id);
+          // setServices(remaining)
+          }
+      });
+  }
 
     
     return (
@@ -49,7 +70,7 @@ const MyOrder = () => {
                 </TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="right"><Image style={{width:"50px", height:"30px"}} src={row.image}></Image></TableCell>
-                <TableCell align="right"><Button>Remove</Button></TableCell>
+                <TableCell align="right"><Button onClick={() => handleDelete(row._id)}>Remove</Button></TableCell>
               </TableRow>
             ))}
           </TableBody>

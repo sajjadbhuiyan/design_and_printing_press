@@ -19,16 +19,16 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/home">Home</Nav.Link>
                         <Nav.Link as={Link} to="/services">Services</Nav.Link>
-                        <Nav.Link as={Link} to="/about">About</Nav.Link>
-                        {user?.email && <Nav.Link as={Link} to="/myorder">My Order</Nav.Link>}
+                        <Nav.Link as={Link} to="/about">About</Nav.Link>                       
+                    </Nav>
+                    <Nav> 
+                    {user?.email && <Nav.Link as={Link} to="/myorder">My Order</Nav.Link>}
                         {user?.email &&
                         <Nav.Link as={Link} to="/manage">Manage Sev</Nav.Link>
                         
                         }
                         {user?.email && <Nav.Link as={Link} to="/addservice">Add New</Nav.Link>}
-                        
-                    </Nav>
-                    <Nav> 
+                        {user?.email && <Nav.Link as={Link} to="/admin">Make Admin</Nav.Link>}
                         {
                             user?.email ?
                             <Button onClick={logOut} variant="secondary">Log Out</Button>:

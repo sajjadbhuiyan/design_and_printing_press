@@ -7,7 +7,7 @@ import useAuth from '../../hooks/useAuth';
 const PlaceOrder = () => {
     const {serviceId} = useParams();
     const [service, setService] = useState({})
-    const [orderSuccess, setOrderSuccess] = useState()
+    const [orderSuccess, setOrderSuccess] = useState(false)
     console.log(orderSuccess)
         useEffect(() => {
             fetch(`https://guarded-plateau-66773.herokuapp.com/services/${serviceId}`)
@@ -36,7 +36,7 @@ const PlaceOrder = () => {
         }
 
         //send data to the server 
-        fetch(`http://localhost:5000/orders`,{
+        fetch(`https://guarded-plateau-66773.herokuapp.com/orders`,{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
@@ -46,7 +46,8 @@ const PlaceOrder = () => {
         .then(res => res.json())
         .then(data =>{
             if(data.insertedId){
-                setOrderSuccess(<Alert severity="success">Your order done</Alert>) 
+                console.log(data);
+                setOrderSuccess(true) 
             }
         })
 
@@ -118,8 +119,8 @@ const PlaceOrder = () => {
                     Order Now
             </Button></Link>
             
-            
             </Form>
+            {orderSuccess && <Alert severity="success">Your Order Successfully Selected</Alert>}
             <hr className='mt-5'/>
             <div>{orderSuccess}</div>
                 </Col>

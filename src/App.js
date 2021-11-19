@@ -8,6 +8,7 @@ import Cart from "./Components/Cart/Cart";
 import Contact from "./Components/Contact/Contact";
 import Home from './Components/Home/Home';
 import Login from "./Components/Login/Login/Login";
+import MakeAdmin from "./Components/MakeAdmin/MakeAdmin";
 import ManageServices from "./Components/ManageServices/ManageServices";
 import MyOrder from "./Components/MyOrder/MyOrder";
 import NotFound from "./Components/NotFound/NotFound";
@@ -52,6 +53,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path='/manage'>
           <ManageServices></ManageServices>
+        </PrivateRoute>
+        <PrivateRoute path='/admin'>
+          <MakeAdmin></MakeAdmin>
         </PrivateRoute>
         <Route path = '/cart/:serviceId'>
             <Cart></Cart>
